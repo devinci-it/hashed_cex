@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Hashed</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="popup.css">
+  <script src="../lib/crypto-js.js"></script>
+  <script src="popup.js" defer></script>
+
+</head>
+
+<body>
+  <div id="hash-container" class="vertical-button-card">
+<h1>h</h1>
+<div class="file-card">
+  <div class="file-card-content">
+    <div class="file-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V4.664a.25.25 0 0 0-.073-.177l-2.914-2.914a.25.25 0 0 0-.177-.073Zm4.48 3.758a.75.75 0 0 1 .755.745l.01 1.497h1.497a.75.75 0 0 1 0 1.5H9v1.507a.75.75 0 0 1-1.5 0V9.005l-1.502.01a.75.75 0 0 1-.01-1.5l1.507-.01-.01-1.492a.75.75 0 0 1 .745-.755Z"></path></svg>
+    </div>
+    <div class="file-name"> 
+      <div class="file-info" id="file-info">
+        <!-- File information will be displayed here -->
+      </div>
+      </div>
+  </div>
+    <hr>
+  </div>
+  <div class="hash-result" id="hash-results">
+    <div>
+
+      <div class="hash-label">MD5</div>
+      <code id="md5-result"></code>
+    </div>
+
+    <div >
+      <div class="hash-label">SHA-1</div>
+      <code id="sha1-result"></code>
+
+    </div>
+<div >
+
+<div class="hash-label">SHA-256</div>
+<code id="sha256-result"></code>
+</div>
+</div>
+  <!-- <div class="card">
+    <label> FILE</label>
+    <p id="file-info"></p> 
+
+  </div> -->
+      <input type="file" id="file-input" style="display: none;">
+      <!-- <button id="upload-file-button">Upload</button> -->
+      <div id="upload-progress-bar-container" style="display: none;" >
+        <div id="upload-progress-bar" style="display: none;"></div>
+      </div>
+      
+    </div>
+    <div class="verify-form card" id="verify-form">
+      <div id="verification-notification" class="notification">
+        <span id="notification-text">Verification successful</span>
+        <div class="countdown-line"></div>
+      </div>
+      <div id="verification-status"></div>
+      <input type="text" id="hash-input" placeholder="Validate Hash">
+      <!-- Add this div in your HTML -->
+    </div>
+    <div class="card card-footer">
+      
+      <button class="copy-button button" id="copy-to-clipboard">
+        <svg xmlns="http://www.w3.org/2000/svg" height="1em" fill="currentColor" viewBox="0 0 384 512">
+        <path
+          d="M 280 64 L 320 64 Q 347 65 365 83 Q 383 101 384 128 L 384 448 Q 383 475 365 493 Q 347 511 320 512 L 64 512 Q 37 511 19 493 Q 1 475 0 448 L 0 128 Q 1 101 19 83 Q 37 65 64 64 L 104 64 L 114 64 Q 120 36 141 18 Q 162 1 192 0 Q 222 1 243 18 Q 264 36 270 64 L 280 64 L 280 64 Z M 64 112 Q 49 113 48 128 L 48 448 Q 49 463 64 464 L 320 464 Q 335 463 336 448 L 336 128 Q 335 113 320 112 L 304 112 L 304 136 Q 302 158 280 160 L 192 160 L 104 160 Q 82 158 80 136 L 80 112 L 64 112 L 64 112 Z M 192 104 Q 214 102 216 80 Q 214 58 192 56 Q 170 58 168 80 Q 170 102 192 104 L 192 104 Z" />
+      </svg>
+    </button>
+    <!-- <button class="copy-button button" onclick="copyToClipboard()">Copy to Clipboard</button> -->
+    <button class="upload-button button" id="upload-file-button">
+      <svg xmlns="http://www.w3.org/2000/svg" height="1em" fill="currentColor" viewBox="0 0 512 519">
+        <path
+        d="M 280 367 Q 278 389 256 391 Q 234 389 232 367 L 232 89 L 137 184 Q 120 198 103 184 Q 89 167 103 150 L 239 14 Q 256 0 273 14 L 409 150 Q 423 167 409 184 Q 392 198 375 184 L 280 89 L 280 367 L 280 367 Z M 312 359 L 312 311 L 448 311 Q 475 312 493 330 Q 511 348 512 375 L 512 455 Q 511 482 493 500 Q 475 518 448 519 L 64 519 Q 37 518 19 500 Q 1 482 0 455 L 0 375 Q 1 348 19 330 Q 37 312 64 311 L 200 311 L 200 359 L 64 359 Q 49 360 48 375 L 48 455 Q 49 470 64 471 L 448 471 Q 463 470 464 455 L 464 375 Q 463 360 448 359 L 312 359 L 312 359 Z M 384 415 Q 386 393 408 391 Q 430 393 432 415 Q 430 437 408 439 Q 386 437 384 415 L 384 415 Z" />
+      </svg>
+    </button>
+    
+    <button class="verify-button button" id="verify-button">
+      <svg xmlns="http://www.w3.org/2000/svg" height="1em" fill="currentColor" viewBox="0 0 482 515">
+        <path
+        d="M 58 127 L 241 49 L 424 127 Q 433 132 433 140 Q 433 187 417 248 Q 401 308 361 366 Q 320 423 247 460 Q 241 462 235 460 Q 162 423 121 366 Q 81 308 65 248 Q 49 187 49 140 Q 49 132 58 127 L 58 127 Z M 443 83 L 254 3 Q 248 0 241 0 Q 234 0 228 3 L 39 83 Q 22 90 12 105 Q 1 120 1 140 Q 0 191 18 260 Q 36 329 83 394 Q 129 460 215 503 Q 241 515 267 503 Q 353 460 399 394 Q 446 329 464 260 Q 482 191 481 140 Q 481 120 470 105 Q 460 90 443 83 L 443 83 Z M 354 209 Q 368 192 354 175 Q 337 161 320 175 L 209 286 L 162 239 Q 145 225 128 239 Q 114 256 128 273 L 192 337 Q 209 351 226 337 L 354 209 L 354 209 Z"
+        />
+      </svg>
+    </button>
+  </div>
+  <div>
+  
+    <!-- <p id="md5-result"></p>
+    <p id="sha1-result"></p>
+    <p id="sha256-result"></p> -->
+    
+    <!-- File information will be displayed here -->
+    <!-- <button id="copy-to-clipboard">Copy to Clipboard</button> -->
+  </div>
+  <hr>
+  <div id="dark-mode-switch-container">
+    <label for="dark-mode-switch"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path d="M9.598 1.591a.749.749 0 0 1 .785-.175 7.001 7.001 0 1 1-8.967 8.967.75.75 0 0 1 .961-.96 5.5 5.5 0 0 0 7.046-7.046.75.75 0 0 1 .175-.786Zm1.616 1.945a7 7 0 0 1-7.678 7.678 5.499 5.499 0 1 0 7.678-7.678Z"></path></svg></label>
+    <label class="switch">
+      <input type="checkbox" id="dark-mode-switch" value="checked">
+      <span class="dark-mode-slider"></span>
+    </label>
+  </div>
+  <div class="footer">
+    <a href="https://github.com/yourusername/yourproject" target="_blank">GitHub</a>
+    <a href="https://support.yourproject.com" target="_blank">Support</a>
+    <p>&copy; 2023 &mdash; hashed </p>
+  </div>
+
+</body>
+
+</html>
